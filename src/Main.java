@@ -14,10 +14,20 @@ public class Main {
         this.m = new int[this.n][this.n];
         this.ex = this.n - 1;
         this.ey = this.n - 2;
-        gen(); // generate maze right after creation
+        gen();
     }
 
     private void gen() {
-        // will implement later
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                m[i][j] = W;
+            }
+        }
+
+        int x = 1;
+        int y = 1;
+        Stack<int[]> s = new Stack<>();
+        m[x][y] = P;
+        s.push(new int[]{x, y});
     }
 }
