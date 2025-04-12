@@ -130,6 +130,6 @@ public class Main {
         int n = 11;
         Main mg = new Main(n);
         ArrayList<int[]> p = mg.sol();
-        mg.prt(p);  // print the maze with the solution path
+        mg.prt(p);
     }
 }
