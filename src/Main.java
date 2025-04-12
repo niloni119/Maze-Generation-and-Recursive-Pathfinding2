@@ -103,14 +103,33 @@ public class Main {
         return p;
     }
 
+    public void prt(ArrayList<int[]> p) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                boolean isp = false;
+                for (int k = 0; k < p.size(); k++) {
+                    int[] s = p.get(k);
+                    if (s[0] == j && s[1] == i) {
+                        isp = true;
+                        break;
+                    }
+                }
+                if (isp) {
+                    System.out.print("* ");
+                } else if (m[i][j] == W) {
+                    System.out.print("[]");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         int n = 11;
         Main mg = new Main(n);
         ArrayList<int[]> p = mg.sol();
-        // added testing the BFS solution by printing the path
-        System.out.println("Solution Path:");
-        for (int[] step : p) {
-            System.out.println(Arrays.toString(step));
-        }
+        mg.prt(p);  // print the maze with the solution path
     }
 }
