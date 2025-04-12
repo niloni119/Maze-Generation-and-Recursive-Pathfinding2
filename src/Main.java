@@ -104,6 +104,7 @@ public class Main {
     }
 
     public void prt(ArrayList<int[]> p) {
+        System.out.println("Maze with the path:");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 boolean isp = false;
