@@ -61,4 +61,56 @@ public class Main {
         m[sy][sx] = P;
         m[ey][ex] = P;
     }
+
+    public ArrayList<int[]> sol() {
+        ArrayList<int[]> p = new ArrayList<>();
+        Queue<int[]> q = new LinkedList<>();
+        boolean[][] v = new boolean[n][n];
+        HashMap<String, int[]> cm = new HashMap<>();
+        int[] start = {sx, sy};
+        q.offer(start);
+        v[sy][sx] = true;
+
+        int[][] d = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+        while (!q.isEmpty()) {
+            int[] c = q.poll();
+            int x = c[0], y = c[1];
+
+            if (x == ex && y == ey) {
+                while (c != null) {
+                    p.add(c);
+                    String key = Arrays.toString(c);
+                    c = cm.get(key);
+                }
+                Collections.reverse(p);
+                break;
+            }
+
+            for (int i = 0; i < d.length; i++) {
+                int nx = x + d[i][0];
+                int ny = y + d[i][1];
+                if (nx >= 0 && ny >= 0 && nx < n && ny < n) {
+                    if (!v[ny][nx] && m[ny][nx] == P) {
+                        int[] next = {nx, ny};
+                        q.add(next);
+                        v[ny][nx] = true;
+                        cm.put(Arrays.toString(next), c);
+                    }
+                }
+            }
+        }
+        return p;
+    }
+
+    public static void main(String[] args) {
+        int n = 11;
+        Main mg = new Main(n);
+        ArrayList<int[]> p = mg.sol();
+        // added testing the BFS solution by printing the path
+        System.out.println("Solution Path:");
+        for (int[] step : p) {
+            System.out.println(Arrays.toString(step));
+        }
+    }
 }
