@@ -57,5 +57,8 @@ public class Main {
                 s.pop();
             }
         }
+
+        m[sy][sx] = P;
+        m[ey][ex] = P;
     }
 }
